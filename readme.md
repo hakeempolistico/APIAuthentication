@@ -3,50 +3,38 @@
 
 **Sign Up**
 ----
-  API.
+  Returns json web token if valid credentials.
 
 * **URL**
 
-  /users/:id
+  https://apiauthentication.herokuapp.com/users/signup
 
 * **Method:**
 
-  `GET`
-  
-*  **URL Params**
-
-   **Required:**
- 
-   `id=[integer]`
+  `POST`
 
 * **Data Params**
 
-  None
+   **Required:**
+ 
+   `email=[string]`
+   `password=[string]`
 
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ id : 12, name : "Michael Bloom" }`
+    **Content:** `{ "newUser" : {
+      "_id":"5bb19d3bfa63315d1099388c",
+      "email":"hjpolisticaaoo@gmail.com",
+      "password":"$2a$10$o1hyTw82lV9SKuma0Ip1UuCBEJFmrnEa3UcELOfbcIcO3JriwjL/e",
+      "__v":0 } }`
  
 * **Error Response:**
 
   * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "User doesn't exist" }`
+    **Content:** `{ "error" : "Email is already in used" }`
 
   OR
 
   * **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `{ error : "You are unauthorized to make this request." }`
-
-* **Sample Call:**
-
-  ```javascript
-    $.ajax({
-      url: "/users/1",
-      dataType: "json",
-      type : "GET",
-      success : function(r) {
-        console.log(r);
-      }
-    });
-  ```
+    **Content:** `VALIDATION ERROR`
