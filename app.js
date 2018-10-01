@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/APIAuthentication', { useNewUrlParser: true });
+mongoose.connect('mongodb://root:password123@ds151433.mlab.com:51433/apiauthentication', { useNewUrlParser: true });
 
 const app = express();
 
