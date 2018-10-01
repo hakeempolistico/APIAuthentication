@@ -3,7 +3,7 @@
 
 **Sign Up**
 ----
-  Returns json web token if valid credentials.
+  Returns user data in json if valid credentials.
 
 * **URL**
 
@@ -31,10 +31,73 @@
  
 * **Error Response:**
 
-  * **Code:** 404 NOT FOUND <br />
+  * **Code:** 403 FORBIDDEN <br />
     **Content:** `{ "error" : "Email is already in used" }`
 
   OR
 
-  * **Code:** 401 UNAUTHORIZED <br />
+  * **Code:** 400 BAD REQUEST <br />
     **Content:** `VALIDATION ERROR`
+
+
+**Sign In**
+----
+  Returns json web token if valid credentials.
+
+* **URL**
+
+  https://apiauthentication.herokuapp.com/users/signin
+
+* **Method:**
+
+  `POST`
+
+* **Data Params**
+
+   **Required:**
+ 
+   `email=[string]`
+   `password=[string]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBdXRoIiwic3ViIjoiNWJiMTM4ZmRlZjM2MDM2MDc0ZmUwZTFlIiwiaWF0IjoxNTM4MzY3NDQ5MzIwLCJleHAiOjE1Mzg0NTM4NDkzMjB9.cvHccUvqznZWY5HGsAVhculoUEbIkd5F7ulUHoTXDTI"} }`
+ 
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `Unauthorized`
+
+  OR
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `VALIDATION ERROR`
+
+
+
+**Secret**
+----
+  Returns resources if valid credentials.
+
+* **URL**
+
+  https://apiauthentication.herokuapp.com/users/secret
+
+* **Method:**
+
+  `GET`
+
+* **Header**
+ 
+   `Authorizatoin=[Valid Token]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ "secret": "resource" }`
+ 
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `Unauthorized`
